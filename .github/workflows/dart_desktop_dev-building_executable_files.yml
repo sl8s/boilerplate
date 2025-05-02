@@ -22,11 +22,13 @@ jobs:
         with:
           channel: ${{ env.flutter_channel }}
           flutter-version: ${{ env.flutter_version }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
       - run: flutter build linux --target-platform=linux-x64
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_x64
+          name: ${{ env.created_at }}_${{ env.app_name }}_linux_x64
           path: ${{ env.working_directory }}/build/linux/x64/release/bundle/
   build_linux_arm64:
     runs-on: ubuntu-24.04-arm
@@ -41,11 +43,13 @@ jobs:
         with:
           channel: ${{ env.flutter_channel_w_arm64 }}
           flutter-version: ${{ env.flutter_version }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
       - run: flutter build linux --target-platform=linux-arm64
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_arm64
+          name: ${{ env.created_at }}_${{ env.app_name }}_linux_arm64
           path: ${{ env.working_directory }}/build/linux/arm64/release/bundle/
   build_windows:
     runs-on: windows-latest
@@ -58,11 +62,13 @@ jobs:
         with:
           channel: ${{ env.flutter_channel }}
           flutter-version: ${{ env.flutter_version }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
       - run: flutter build windows
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_exe
+          name: ${{ env.created_at }}_${{ env.app_name }}_windows_exe
           path: ${{ env.working_directory }}\build\windows\x64\runner\Release\
   build_macos:
     runs-on: macos-latest
@@ -73,9 +79,11 @@ jobs:
         with:
           channel: ${{ env.flutter_channel }}
           flutter-version: ${{ env.flutter_version }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
       - run: flutter build macos
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_app
+          name: ${{ env.created_at }}_${{ env.app_name }}_macos_app
           path: ${{ env.working_directory }}/build/macos/Build/Products/Release/
