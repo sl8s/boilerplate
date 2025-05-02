@@ -26,7 +26,7 @@ jobs:
           name: ${{ env.created_at }}_${{ env.app_name }}_x64
           path: ${{ env.working_directory }}/build/linux/x64/release/bundle/
   build_linux_arm64:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04-arm
     steps:
       - run: echo "created_at=$(date +'%Y_%m_%d_%H_%M')" >> $GITHUB_ENV
       - run: |
