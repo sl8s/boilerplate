@@ -27,9 +27,9 @@ jobs:
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_apk
+          name: ${{ env.created_at }}_${{ env.app_name }}_android_apk
           path: ${{ env.working_directory }}/app/build/outputs/apk/release/
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.created_at }}_${{ env.app_name }}_aab
+          name: ${{ env.created_at }}_${{ env.app_name }}_android_aab
           path: ${{ env.working_directory }}/app/build/outputs/bundle/release/

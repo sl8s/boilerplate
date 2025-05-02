@@ -20,5 +20,7 @@ jobs:
           distribution: ${{ env.java_distribution }}
           java-version: ${{ env.java_version }}
           cache: ${{ env.java_cache }}
+      - run: ./gradlew build
+        working-directory: ${{ env.working_directory }}
       - run: ./gradlew test
         working-directory: ${{ env.working_directory }}
