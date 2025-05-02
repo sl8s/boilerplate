@@ -1,0 +1,48 @@
+name: dart_mobile_dev-building_executable_files
+run-name: ${{ github.actor }} - dart_mobile_dev-building_executable_files
+on:
+  workflow_dispatch:
+env:
+  flutter_channel: stable
+  working_directory: dart_mobile_dev
+  app_name: dev
+jobs:
+  build_android:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "created_at=$(date +'%Y_%m_%d_%H_%M')" >> $GITHUB_ENV
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.flutter_channel }}
+      - run: flutter build apk
+        working-directory: ${{ env.working_directory }}
+      - run: flutter build appbundle
+        working-directory: ${{ env.working_directory }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.created_at }}_${{ env.app_name }}_apk
+          path: ${{ env.working_directory }}/build/app/outputs/flutter-apk/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.created_at }}_${{ env.app_name }}_aab
+          path: ${{ env.working_directory }}/build/app/outputs/bundle/release/
+  build_ios:
+    runs-on: macos-latest
+    steps:
+      - run: echo "created_at=$(date +'%Y_%m_%d_%H_%M')" >> $GITHUB_ENV
+      - run: sudo gem install cocoapods
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.flutter_channel }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
+      - run: pod install
+        working-directory: ${{ env.working_directory }}/ios
+      - run: flutter build ios --release --no-codesign
+        working-directory: ${{ env.working_directory }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.created_at }}_${{ env.app_name }}_app
+          path: ${{ env.working_directory }}/build/ios/iphoneos/
