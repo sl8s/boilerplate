@@ -5,6 +5,7 @@ on:
 env:
   flutter_channel: stable
   flutter_channel_w_arm64: master
+  flutter_version: 3.29.3
   working_directory: dart_desktop_dev
   app_name: dev
 jobs:
@@ -20,6 +21,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
       - run: flutter build linux --target-platform=linux-x64
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
@@ -38,6 +40,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: ${{ env.flutter_channel_w_arm64 }}
+          flutter-version: ${{ env.flutter_version }}
       - run: flutter build linux --target-platform=linux-arm64
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
@@ -54,6 +57,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
       - run: flutter build windows
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
@@ -68,6 +72,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
       - run: flutter build macos
         working-directory: ${{ env.working_directory }}
       - uses: actions/upload-artifact@v4
