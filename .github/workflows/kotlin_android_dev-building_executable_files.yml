@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 env:
   java_distribution: "zulu"
-  java_version: "17"
+  java_version: "21"
   java_cache: "gradle"
   working_directory: kotlin_android_dev
   app_name: dev
