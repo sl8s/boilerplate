@@ -1,6 +1,7 @@
 .idea/
 .DS_Store
 .dart_tool/
+assets/.env
 build/
 android/app/.cxx/
 *.iml

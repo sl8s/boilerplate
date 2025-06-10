@@ -10,7 +10,7 @@ final class SystemTrayUtility {
   static Future<void> initSystemTrayParameterAppWindow() async {
     String path = Platform.isWindows
         ? "assets/icons/app_icon.ico"
-        : "assets/icons/app_icon.png";
+        : "assets/images/app_icon.png";
     final SystemTray systemTray = SystemTray();
     await systemTray.initSystemTray(
       title: "Example",

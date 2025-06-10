@@ -12,26 +12,26 @@
 - Linux
 - Web
 
-## List of boards on Github Project
+## Catalogs
 
-- [Figma](https://github.com/users/sl8s/projects/2/views/1)
-- [dart_common_dev](https://github.com/users/sl8s/projects/2/views/2)
-- [dart_desktop_dev](https://github.com/users/sl8s/projects/2/views/3)
-- [dart_mobile_dev](https://github.com/users/sl8s/projects/2/views/4)
-- [dart_web_dev](https://github.com/users/sl8s/projects/2/views/5)
-- [kotlin_android_dev](https://github.com/users/sl8s/projects/2/views/6)
-- [typescript_api_dev](https://github.com/users/sl8s/projects/2/views/7)
+- [figma](https://www.figma.com/design/UQNBc9qEE0AlhyQSr1HBol/dev?node-id=7-46&t=0Vq9Fd4kCOpKWPSj-1)
+- [dart_common_dev](https://github.com/sl8s/dev/tree/main/dart_common_dev)
+- [dart_desktop_dev](https://github.com/sl8s/dev/tree/main/dart_desktop_dev)
+- [dart_mobile_dev](https://github.com/sl8s/dev/tree/main/dart_mobile_dev)
+- [dart_web_dev](https://github.com/sl8s/dev/tree/main/dart_web_dev)
+- [kotlin_android_dev](https://github.com/sl8s/dev/tree/main/kotlin_android_dev)
+- [typescript_api_dev](https://github.com/sl8s/dev/tree/main/typescript_api_dev)
 
 ## Tags
 
-- Use the [List of boards on Github Project](https://github.com/sl8s/dev?tab=readme-ov-file#list-of-boards-on-github-project) under each tag
+- Use the [Catalogs](https://github.com/sl8s/dev?tab=readme-ov-file#catalogs) under each tag
 
 ### 0.0.1 -- <img src="assets/red_cross.svg" align alt="Red Cross"/>
 
-- [Figma](https://github.com/users/sl8s/projects/2/views/1) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
-- [dart_common_dev](https://github.com/users/sl8s/projects/2/views/2) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
-- [dart_mobile_dev](https://github.com/users/sl8s/projects/2/views/4) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
-- [dart_desktop_dev](https://github.com/users/sl8s/projects/2/views/3) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
+- [figma](https://www.figma.com/design/UQNBc9qEE0AlhyQSr1HBol/dev?node-id=7-46&t=0Vq9Fd4kCOpKWPSj-1) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
+- [dart_common_dev](https://github.com/sl8s/dev/tree/main/dart_common_dev) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
+- [dart_mobile_dev](https://github.com/sl8s/dev/tree/main/dart_mobile_dev) -- <img src="assets/red_cross.svg" alt="Red Cross"/>
+- [dart_desktop_dev](https://github.com/sl8s/dev/tree/main/dart_desktop_dev)-- <img src="assets/red_cross.svg" alt="Red Cross"/>
 
 #### Resolution||Platform||Version -- <img src="assets/red_cross.svg" alt="Red Cross"/>
 

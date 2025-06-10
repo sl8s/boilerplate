@@ -54,7 +54,7 @@
 - - web
 
 - Commands:
-- - cd dart_web_${your_name}
+- - cd dart_web_${your_name}/app
 - - flutter create --org com --template=app --platforms=web .
 
 ### kotlin_android_dev
