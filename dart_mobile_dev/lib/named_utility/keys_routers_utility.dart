@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 
 @immutable
 final class KeysRoutersUtility {
-  /* MainVM */
-  static const String mainVM = "/";
+  /* HomeVM */
+  static const String homeVM = "/";
 
   const KeysRoutersUtility._();
 }

@@ -1,6 +1,7 @@
 .idea/
 .DS_Store
 /app/.dart_tool/
+/app/assets/.env
 /app/build/
 /app/*.iml
 /app/.flutter-plugins

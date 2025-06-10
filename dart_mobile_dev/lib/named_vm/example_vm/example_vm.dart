@@ -1,10 +1,11 @@
 import 'package:dart_common_dev/named_utility/ready_data_utility.dart';
+import 'package:dart_mobile_dev/named_theme/base_named_theme.dart';
 import 'package:dart_mobile_dev/named_utility/flutter_theme_utility.dart';
-import 'package:flutter/material.dart';
-import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart' as lamm;
 import 'package:dart_mobile_dev/named_utility/platform_utility.dart';
 import 'package:dart_mobile_dev/named_vm/example_vm/data_for_example_vm.dart';
 import 'package:dart_mobile_dev/named_vm/example_vm/enum_data_for_example_vm.dart';
+import 'package:flutter/material.dart';
+import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart' as lamm;
 
 final class ExampleVM extends StatefulWidget {
   const ExampleVM({super.key});
@@ -32,139 +33,217 @@ final class _ExampleVMState extends State<ExampleVM> {
       case EnumDataForExampleVM.isLoading:
         return PlatformUtility.getNamedWidgetFromContextAndMobileWidgetAndTabletWidgetAndLargeTabletWidget(
             context,
-            mobileWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: CircularProgressIndicator(
-                    color: namedThemeFromContext.text),
-              ),
-            ),
-            tabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: CircularProgressIndicator(
-                    color: namedThemeFromContext.text),
-              ),
-            ),
-            largeTabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: CircularProgressIndicator(
-                    color: namedThemeFromContext.text),
-              ),
-            )
+            mobileWidget: _buildMobileWidgetWIsLoading(
+                context,
+                namedThemeFromContext,
+                textThemeFromContextAndColor),
+            tabletWidget: _buildTabletWidgetWIsLoading(
+                context,
+                namedThemeFromContext,
+                textThemeFromContextAndColor),
+            largeTabletWidget: _buildLargeTabletWidgetWIsLoading(
+                context,
+                namedThemeFromContext,
+                textThemeFromContextAndColor)
         );
       case EnumDataForExampleVM.exception:
         return PlatformUtility.getNamedWidgetFromContextAndMobileWidgetAndTabletWidgetAndLargeTabletWidget(
-            context,
-            mobileWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            ),
-            tabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            ),
-            largeTabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            )
+          context,
+          mobileWidget: _buildMobileWidgetWException(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed),
+          tabletWidget: _buildTabletWidgetWException(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed),
+          largeTabletWidget: _buildLargeTabletWidgetWException(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed)
         );
       case EnumDataForExampleVM.success:
         return PlatformUtility.getNamedWidgetFromContextAndMobileWidgetAndTabletWidgetAndLargeTabletWidget(
-            context,
-            mobileWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "MobileWidget",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            ),
-            tabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "TabletWidget",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            ),
-            largeTabletWidget: Scaffold(
-              backgroundColor: namedThemeFromContext.backgroundPrimary,
-              appBar: AppBar(
-                backgroundColor: namedThemeFromContext.backgroundPrimary,
-                title: Text(
-                    "Flutter App",
-                    style: textThemeFromContextAndColor.headlineMedium),
-              ),
-              body: Center(
-                child: Text(
-                    "LargeTabletWidget",
-                    style: textThemeFromContextAndColor.bodyMedium),
-              ),
-            )
+          context,
+          mobileWidget: _buildMobileWidgetWSuccess(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed),
+          tabletWidget: _buildTabletWidgetWSuccess(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed),
+          largeTabletWidget: _buildLargeTabletWidgetWSuccess(
+              context,
+              namedThemeFromContext,
+              textThemeFromContextAndColor,
+              dataWNamed)
         );
     }
+  }
+
+  Widget _buildMobileWidgetWIsLoading(BuildContext context, BaseNamedTheme namedTheme, TextTheme textTheme) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: CircularProgressIndicator(
+            color: namedTheme.text),
+      ),
+    );
+  }
+
+  Widget _buildTabletWidgetWIsLoading(BuildContext context, BaseNamedTheme namedTheme, TextTheme textTheme) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: CircularProgressIndicator(
+            color: namedTheme.text),
+      ),
+    );
+  }
+
+  Widget _buildLargeTabletWidgetWIsLoading(BuildContext context, BaseNamedTheme namedTheme, TextTheme textTheme) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: CircularProgressIndicator(
+            color: namedTheme.text),
+      ),
+    );
+  }
+
+  Widget _buildMobileWidgetWException(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
+            style: textTheme.bodyMedium),
+      ),
+    );
+  }
+
+  Widget _buildTabletWidgetWException(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
+            style: textTheme.bodyMedium),
+      ),
+    );
+  }
+
+  Widget _buildLargeTabletWidgetWException(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "Exception: ${dataWNamed.exceptionController.getKeyParameterException}",
+            style: textTheme.bodyMedium),
+      ),
+    );
+  }
+
+  Widget _buildMobileWidgetWSuccess(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "MobileWidget",
+            style: textTheme.bodyMedium),
+      ),
+    );
+  }
+
+  Widget _buildTabletWidgetWSuccess(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "TabletWidget",
+            style: textTheme.bodyMedium),
+      ),
+    );
+  }
+
+  Widget _buildLargeTabletWidgetWSuccess(BuildContext context,BaseNamedTheme namedTheme, TextTheme textTheme, DataForExampleVM dataWNamed) {
+    return Scaffold(
+      backgroundColor: namedTheme.backgroundPrimary,
+      appBar: AppBar(
+        backgroundColor: namedTheme.backgroundPrimary,
+        title: Text(
+            "Flutter App",
+            style: textTheme.headlineMedium
+        ),
+      ),
+      body: Center(
+        child: Text(
+            "LargeTabletWidget",
+            style: textTheme.bodyMedium),
+      ),
+    );
   }
 
   @override
@@ -173,7 +252,6 @@ final class _ExampleVMState extends State<ExampleVM> {
     super.initState();
     _init();
   }
-
 
   @override
   void dispose() {
@@ -195,7 +273,6 @@ final class _ExampleVMState extends State<ExampleVM> {
   }
 
   Future<String> _firstRequest() async {
-    await Future.delayed(const Duration(seconds: 1));
     _namedStreamWState.getDataForNamed.isLoading = false;
     return ReadyDataUtility.success;
   }
