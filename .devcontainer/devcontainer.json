@@ -1,0 +1,17 @@
+{
+  "name": "dev",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+  "remoteEnv": {
+    "API_KEY": "${localEnv:API_KEY}",
+    "JWT_SECRET_KEY": "${localEnv:JWT_SECRET_KEY}",
+    "DB_DEPENDENCY_NAME": "${localEnv:DB_DEPENDENCY_NAME}",
+    "POSTGRES_PORT": "${localEnv:POSTGRES_PORT}",
+    "POSTGRES_USER": "${localEnv:POSTGRES_USER}",
+    "POSTGRES_PASSWORD": "${localEnv:POSTGRES_PASSWORD}",
+    "POSTGRES_DB": "${localEnv:POSTGRES_DB}",
+    "ADMINER_PORT": "${localEnv:ADMINER_PORT}",
+    "APP_PORT": "${localEnv:APP_PORT}",
+    "NGINX_PORT": "${localEnv:NGINX_PORT}"
+  },
+  "postCreateCommand": "./.devcontainer/generate_env.sh"
+}
