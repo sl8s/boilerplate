@@ -2,49 +2,46 @@ import express, { Request, Response } from "express";
 import EnumHomeRouter from "./enum_home_router";
 import { ExceptionAdapter, ShareProxy } from "smvp_typescript";
 
-// Final variables
 const router = express.Router();
-const shareProxy = new ShareProxy();
 
-// Not final variables
-let request: Request | null;
-let response: Response | null;
-let exceptionAdapter = new ExceptionAdapter(null);
-
-function getViewState(): EnumHomeRouter {
+function getViewState(exceptionAdapter: ExceptionAdapter): EnumHomeRouter {
     if(exceptionAdapter.hasException()) {
         return EnumHomeRouter.exception;
     }
     return EnumHomeRouter.success;
 }
 
-function dispose(): void {
+function dispose(shareProxy: ShareProxy): void {
     shareProxy.deleteListenersByListenerId([]);
-    request = null;
-    response = null;
 }
 
-function build(): void {
-    switch(getViewState()) {
+function build(
+    _req: Request,
+    res: Response,
+    shareProxy: ShareProxy,
+    exceptionAdapter: ExceptionAdapter): void 
+{
+    switch(getViewState(exceptionAdapter)) {
         case EnumHomeRouter.exception:
-            response?.status(504).json(exceptionAdapter.getKey());
-            dispose();
+            res.status(504).json(exceptionAdapter.getKey());
+            dispose(shareProxy);
             break;
         case EnumHomeRouter.success: 
-            response?.status(200).json({
+            res.status(200).json({
                 timestamp : new Date().toLocaleString(),
                 message : "v0.0.1"
             });
-            dispose();
+            dispose(shareProxy);
             break;   
     }
 }
 
-router.get("/", (req: Request, res: Response) => {
-    request = req;
-    response = res;
-    build();
-});
+function home(req: Request, res: Response): void {
+    const shareProxy = new ShareProxy();
+    build(req, res, shareProxy, new ExceptionAdapter(null));
+}
+
+router.get("/", home);
 
 export default router;
 
