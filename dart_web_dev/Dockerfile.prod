@@ -1,7 +1,7 @@
 ## Assembly
 FROM ubuntu:25.04 AS build-env
 ARG FLUTTER_SDK=/developer/flutter
-ARG FLUTTER_VERSION=3.29.3
+ARG FLUTTER_VERSION=3.32.2
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y curl git unzip libglu1-mesa && \
     apt-get clean
