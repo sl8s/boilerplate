@@ -1,14 +1,15 @@
 import express, { Request, Response } from "express";
-import EnumHomeRouter from "./enum_home_router";
 import { ExceptionAdapter, ShareProxy } from "smvp_typescript";
+import EnumSubmitRouter from "./enum_submit_router";
+import simpleMiddleware from "../../middlewares/simple_middleware/simple_middleware";
 
 const router = express.Router();
 
-function getViewState(exceptionAdapter: ExceptionAdapter): EnumHomeRouter {
+function getViewState(exceptionAdapter: ExceptionAdapter): EnumSubmitRouter {
     if(exceptionAdapter.hasException()) {
-        return EnumHomeRouter.exception;
+        return EnumSubmitRouter.exception;
     }
-    return EnumHomeRouter.success;
+    return EnumSubmitRouter.success;
 }
 
 function dispose(shareProxy: ShareProxy): void {
@@ -16,34 +17,35 @@ function dispose(shareProxy: ShareProxy): void {
 }
 
 function build(
-    _req: Request,
+    req: Request,
     res: Response,
     shareProxy: ShareProxy,
     exceptionAdapter: ExceptionAdapter): void 
 {
     switch(getViewState(exceptionAdapter)) {
-        case EnumHomeRouter.exception:
+        case EnumSubmitRouter.exception:
             res.status(504).json({
                 "key" : exceptionAdapter.getKey()
             });
             dispose(shareProxy);
             break;
-        case EnumHomeRouter.success: 
+        case EnumSubmitRouter.success: 
             res.status(200).json({
                 "timestamp" : new Date().toLocaleString(),
-                "message" : "v0.0.1"
+                "message" : "Form submitted with data: " + req.body["qwerty"],
+                "middlewareMessage": res.locals.test
             });
             dispose(shareProxy);
             break;   
     }
 }
 
-function homeRouter(req: Request, res: Response): void {
+function submitRouter(req: Request, res: Response): void {
     const shareProxy = new ShareProxy();
     build(req, res, shareProxy, new ExceptionAdapter(null));
 }
 
-router.get("/", homeRouter);
+router.post("/submit", simpleMiddleware, submitRouter);
 
 export default router;
 

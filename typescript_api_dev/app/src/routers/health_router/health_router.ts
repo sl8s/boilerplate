@@ -1,14 +1,14 @@
 import express, { Request, Response } from "express";
-import EnumHomeRouter from "./enum_home_router";
 import { ExceptionAdapter, ShareProxy } from "smvp_typescript";
+import EnumHealthRouter from "./enum_health_router";
 
 const router = express.Router();
 
-function getViewState(exceptionAdapter: ExceptionAdapter): EnumHomeRouter {
+function getViewState(exceptionAdapter: ExceptionAdapter): EnumHealthRouter {
     if(exceptionAdapter.hasException()) {
-        return EnumHomeRouter.exception;
+        return EnumHealthRouter.exception;
     }
-    return EnumHomeRouter.success;
+    return EnumHealthRouter.success;
 }
 
 function dispose(shareProxy: ShareProxy): void {
@@ -22,28 +22,25 @@ function build(
     exceptionAdapter: ExceptionAdapter): void 
 {
     switch(getViewState(exceptionAdapter)) {
-        case EnumHomeRouter.exception:
+        case EnumHealthRouter.exception:
             res.status(504).json({
                 "key" : exceptionAdapter.getKey()
             });
             dispose(shareProxy);
             break;
-        case EnumHomeRouter.success: 
-            res.status(200).json({
-                "timestamp" : new Date().toLocaleString(),
-                "message" : "v0.0.1"
-            });
+        case EnumHealthRouter.success: 
+            res.sendStatus(200);
             dispose(shareProxy);
             break;   
     }
 }
 
-function homeRouter(req: Request, res: Response): void {
+function healthRouter(req: Request, res: Response): void {
     const shareProxy = new ShareProxy();
     build(req, res, shareProxy, new ExceptionAdapter(null));
 }
 
-router.get("/", homeRouter);
+router.get("/health", healthRouter);
 
 export default router;
 
