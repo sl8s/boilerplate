@@ -16,7 +16,7 @@ dependencies:
   smvp_dart:
     git:
       url: https://github.com/sl8s/smvp.git
-      ref: v0.0.1
+      ref: v1.0.0
       path: packages/smvp_dart
   meta: ^1.16.0
   intl: ^0.20.2
