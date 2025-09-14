@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 import path from "path";
 import { Server } from "http";
 import { shutdown, launch } from "./utilities/server_methods";
-import exampleRouter from "./routers/example_router/example_router";
-import healthRouter from "./routers/health_router/health_router";
-import homeRouter from "./routers/home_router/home_router";
-import readyRouter from "./routers/ready_router/ready_router";
-import submitRouter from "./routers/submit_router/submit_router";
+import exampleRouter from "./routers/example_router";
+import healthRouter from "./routers/health_router";
+import homeRouter from "./routers/home_router";
+import readyRouter from "./routers/ready_router";
+import submitRouter from "./routers/submit_router";
 
 dotenv.config({ path: path.resolve(process.cwd(), "..", ".env") });
 
