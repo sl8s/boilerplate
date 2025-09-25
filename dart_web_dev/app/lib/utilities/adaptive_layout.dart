@@ -90,7 +90,7 @@ final class AdaptiveLayout {
     if (ResponsiveBreakpoints.of(context).isDesktop) {
       return TextTheme(
         headlineMedium: TextStyle(
-          fontSize: 32.0,
+          fontSize: 36.0,
           fontWeight: FontWeight.w600,
           fontFamily: "Inter",
           color: color,
@@ -102,13 +102,13 @@ final class AdaptiveLayout {
           color: color,
         ),
         bodyMedium: TextStyle(
-          fontSize: 22.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.w500,
           fontFamily: "Inter",
           color: color,
         ),
         bodySmall: TextStyle(
-          fontSize: 20.0,
+          fontSize: 18.0,
           fontWeight: FontWeight.w400,
           fontFamily: "Inter",
           color: color,
@@ -119,7 +119,7 @@ final class AdaptiveLayout {
         Constants.largeDesktop) {
       return TextTheme(
         headlineMedium: TextStyle(
-          fontSize: 34.0,
+          fontSize: 40.0,
           fontWeight: FontWeight.w600,
           fontFamily: "Inter",
           color: color,
@@ -146,13 +146,13 @@ final class AdaptiveLayout {
     }
     return TextTheme(
       headlineMedium: TextStyle(
-        fontSize: 38.0,
+        fontSize: 44.0,
         fontWeight: FontWeight.w600,
         fontFamily: "Inter",
         color: color,
       ),
       bodyLarge: TextStyle(
-        fontSize: 30.0,
+        fontSize: 32.0,
         fontWeight: FontWeight.w500,
         fontFamily: "Inter",
         color: color,
