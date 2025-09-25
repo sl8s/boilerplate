@@ -6,16 +6,16 @@ import 'package:dart_web_dev/utilities/adaptive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:smvp_dart/smvp.dart';
 
-enum EnumTestExampleView { isLoading, exception, success }
+enum EnumExampleViewTest { isLoading, exception, success }
 
-final class TestExampleView extends StatefulWidget {
-  const TestExampleView({super.key});
+final class ExampleViewTest extends StatefulWidget {
+  const ExampleViewTest({super.key});
 
   @override
-  State<TestExampleView> createState() => _TestExampleViewState();
+  State<ExampleViewTest> createState() => _ExampleViewTestState();
 }
 
-final class _TestExampleViewState extends State<TestExampleView> {
+final class _ExampleViewTestState extends State<ExampleViewTest> {
   // Final variables
   final _shareProxy = ShareProxy();
 
@@ -32,7 +32,7 @@ final class _TestExampleViewState extends State<TestExampleView> {
       theme.text,
     );
     switch (getViewState()) {
-      case EnumTestExampleView.isLoading:
+      case EnumExampleViewTest.isLoading:
         return AdaptiveLayout.getAdaptiveWidget(
           context,
           mobileWidget: _buildMobileWhereVSIsLoading(
@@ -57,7 +57,7 @@ final class _TestExampleViewState extends State<TestExampleView> {
           ),
           tvWidget: _buildTVWhereVSIsLoading(context, theme, adaptiveTextTheme),
         );
-      case EnumTestExampleView.exception:
+      case EnumExampleViewTest.exception:
         return AdaptiveLayout.getAdaptiveWidget(
           context,
           mobileWidget: _buildMobileWhereVSException(
@@ -82,7 +82,7 @@ final class _TestExampleViewState extends State<TestExampleView> {
           ),
           tvWidget: _buildTVWhereVSException(context, theme, adaptiveTextTheme),
         );
-      case EnumTestExampleView.success:
+      case EnumExampleViewTest.success:
         return AdaptiveLayout.getAdaptiveWidget(
           context,
           mobileWidget: _buildMobileWhereVSSuccess(
@@ -122,14 +122,14 @@ final class _TestExampleViewState extends State<TestExampleView> {
     super.dispose();
   }
 
-  EnumTestExampleView getViewState() {
+  EnumExampleViewTest getViewState() {
     if (_isLoading) {
-      return EnumTestExampleView.isLoading;
+      return EnumExampleViewTest.isLoading;
     }
     if (_exceptionAdapter.hasException()) {
-      return EnumTestExampleView.exception;
+      return EnumExampleViewTest.exception;
     }
-    return EnumTestExampleView.success;
+    return EnumExampleViewTest.success;
   }
 
   Widget _buildMobileWhereVSIsLoading(
@@ -399,5 +399,5 @@ final class _TestExampleViewState extends State<TestExampleView> {
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App(goRouter: Routers.getRouterForTests(TestExampleView())));
+  runApp(App(goRouter: Routers.getRouterForTests(ExampleViewTest())));
 }
