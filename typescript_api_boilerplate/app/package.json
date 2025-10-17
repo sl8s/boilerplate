@@ -1,0 +1,30 @@
+{
+  "name": "typescript_api_boilerplate",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "download": "npm install .",
+    "build": "tsc",
+    "server:dev": "nodemon ./src/app.ts",
+    "server:prod": "node ./build/src/app.js",
+    "test": "npx vitest run"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "dotenv": "^17.2.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "jsonwebtoken": "^9.0.2",
+    "smvp_typescript": "https://github.com/sl8s/smvp/releases/download/v1.0.0/smvp_typescript_v1_0_0.tgz"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
