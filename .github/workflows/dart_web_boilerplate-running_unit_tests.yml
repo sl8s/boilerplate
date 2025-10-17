@@ -1,0 +1,22 @@
+name: dart_web_boilerplate-running_unit_tests
+run-name: ${{ github.actor }} - dart_web_boilerplate-running_unit_tests
+on:
+  push:
+    branches:
+      - sl8s
+  workflow_dispatch:
+env:
+  flutter_channel: stable
+  working_directory: dart_web_boilerplate/app
+jobs:
+  task:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.flutter_channel }}
+      - run: flutter pub get
+        working-directory: ${{ env.working_directory }}
+      - run: flutter test
+        working-directory: ${{ env.working_directory }}

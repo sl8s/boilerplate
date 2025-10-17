@@ -1,0 +1,41 @@
+version: "3"
+
+env:
+  app_directory: ./app
+
+tasks:
+  flutter:clean:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter clean
+  flutter:download:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter pub get
+  flutter:upgrade:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter pub upgrade
+  flutter:outdated:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter pub outdated
+  flutter:test:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter test
+  flutter:gen_translate:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter gen-l10n
+  flutter:run:
+    dir: "{{.app_directory}}"
+    cmds:
+      - flutter run -d chrome --web-port=4000 | grep "flutter"
+  docker:run:
+    cmds:
+      - docker-compose -f docker-compose.prod.yml down
+      - docker-compose -f docker-compose.prod.yml up --build
+  docker:stop:
+    cmds:
+      - docker-compose -f docker-compose.prod.yml down  

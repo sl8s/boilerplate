@@ -1,0 +1,22 @@
+name: typescript_api_boilerplate-running_unit_tests
+run-name: ${{ github.actor }} - typescript_api_boilerplate-running_unit_tests
+on:
+  push:
+    branches:
+      - sl8s
+  workflow_dispatch:
+env:
+  node_version: 24.7.0
+  working_directory: typescript_api_boilerplate/app
+jobs:
+  task:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.node_version }}
+      - run: npm run download
+        working-directory: ${{ env.working_directory }}
+      - run: npm run test
+        working-directory: ${{ env.working_directory }}
