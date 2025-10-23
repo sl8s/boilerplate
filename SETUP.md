@@ -2,8 +2,8 @@
 
 ## Project setup
 
-- [dart_web_boilerplate](https://github.com/sl8s/boilerplate/blob/main/SETUP.md#dart_web_boilerplate)
-- [typescript_api_boilerplate](https://github.com/sl8s/boilerplate/blob/main/SETUP.md#typescript_api_boilerplate)
+- [dart_web_boilerplate](#dart_web_boilerplate)
+- [typescript_api_boilerplate](#typescript_api_boilerplate)
 
 ### dart_web_boilerplate
 
