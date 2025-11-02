@@ -24,17 +24,10 @@ tasks:
     dir: "{{.app_directory}}"
     cmds:
       - npm run server:prod
-  docker:dev:run:
+  docker:run:
     cmds:
-      - docker-compose -f docker-compose.dev.yml down
-      - docker-compose -f docker-compose.dev.yml up --build
-  docker:dev:stop:
+      - docker-compose down
+      - docker-compose up --build
+  docker:stop:
     cmds:
-      - docker-compose -f docker-compose.dev.yml down
-  docker:prod:run:
-    cmds:
-      - docker-compose -f docker-compose.prod.yml down
-      - docker-compose -f docker-compose.prod.yml up --build
-  docker:prod:stop:
-    cmds:
-      - docker-compose -f docker-compose.prod.yml down  
+      - docker-compose down
