@@ -34,8 +34,8 @@ tasks:
       - flutter run -d chrome --web-port=4000 | grep "flutter"
   docker:run:
     cmds:
-      - docker-compose -f docker-compose.prod.yml down
-      - docker-compose -f docker-compose.prod.yml up --build
+      - docker-compose down
+      - docker-compose up --build
   docker:stop:
     cmds:
-      - docker-compose -f docker-compose.prod.yml down  
+      - docker-compose down

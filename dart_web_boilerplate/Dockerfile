@@ -1,7 +1,7 @@
 ## Assembly
 FROM ubuntu:25.04 AS build-env
 ARG FLUTTER_SDK=/developer/flutter
-ARG FLUTTER_VERSION=3.32.2
+ARG FLUTTER_VERSION=3.35.6
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y curl git unzip libglu1-mesa && \
     apt-get clean
@@ -17,6 +17,6 @@ RUN flutter clean && flutter pub get && flutter build web
 ## Deploy
 FROM nginx:latest
 COPY --from=build-env /web/app/build/web /usr/share/nginx/html
-COPY nginx.prod.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

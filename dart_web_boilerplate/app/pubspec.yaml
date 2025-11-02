@@ -3,8 +3,8 @@ version: 0.0.1
 publish_to: 'none'
 
 environment:
-  sdk: ">=3.8.1"
-  flutter: '>=3.32.2'
+  sdk: ">=3.9.2"
+  flutter: '>=3.35.6'
 
 dependencies:
   flutter:
@@ -16,7 +16,7 @@ dependencies:
   smvp_dart:
     git:
       url: https://github.com/sl8s/smvp.git
-      ref: v1.0.0
+      ref: v1.0.1
       path: packages/smvp_dart
   meta: ^1.16.0
   intl: ^0.20.2
