@@ -3,6 +3,7 @@
   "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
   "remoteEnv": {
     "API_KEY": "${localEnv:API_KEY}",
+    "DOCKERFILE": "${localEnv:DOCKERFILE}",
     "JWT_SECRET_KEY": "${localEnv:JWT_SECRET_KEY}",
     "DB_DEPENDENCY_NAME": "${localEnv:DB_DEPENDENCY_NAME}",
     "POSTGRES_PORT": "${localEnv:POSTGRES_PORT}",

@@ -3,6 +3,7 @@ cat <<EOF > dart_web_boilerplate/app/assets/.env
 API_KEY=${API_KEY}
 EOF
 cat <<EOF > typescript_api_boilerplate/.env
+DOCKERFILE=${DOCKERFILE}
 JWT_SECRET_KEY=${JWT_SECRET_KEY}
 DB_DEPENDENCY_NAME=${DB_DEPENDENCY_NAME}
 POSTGRES_PORT=${POSTGRES_PORT}
